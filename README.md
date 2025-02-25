@@ -1,6 +1,7 @@
 # Job Application Automation System
 
 A system for automated job application submissions with resume upload and CAPTCHA solving capabilities.
+
 Python 3.8+
 Selenium
 License: MIT
