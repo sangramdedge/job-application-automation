@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrant Job Application Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.95);
+            max-width: 600px;
+            margin: 30px auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            color: #2d3748;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #4a5568;
+            font-weight: 600;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        input:focus, select:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+            outline: none;
+        }
+
+        .captcha {
+            background: #fff5f5;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 25px 0;
+            border-left: 5px solid #fc8181;
+        }
+
+        #captchaQuestion {
+            color: #c53030;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+            font-size: 1.1em;
+        }
+
+        #resume {
+            border: 2px dashed #63b3ed;
+            padding: 20px;
+            text-align: center;
+            background: #f0f4f8;
+            border-radius: 10px;
+        }
+
+        #resume:hover {
+            background: #ebf8ff;
+            border-color: #4299e1;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(45deg, #f687b3, #805ad5);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            width: 100%;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        button[type="submit"]:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        #successMessage {
+            background: #48bb78;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .radio-group {
+            display: flex;
+            gap: 20px;
+            margin: 15px 0;
+        }
+
+        .radio-group label {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4a5568;
+            cursor: pointer;
+        }
+
+        input[type="radio"] {
+            width: auto;
+            accent-color: #805ad5;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>🎯 Job Application Form</h1>
+        <form id="applicationForm" onsubmit="return validateForm(event)">
+            <!-- Personal Information Section -->
+            <div class="form-group personal-info">
+                <label for="full_name">Full Name</label>
+                <input type="text" id="full_name" name="full_name" required placeholder="Enter your full name">
+            </div>
+
+            <div class="form-group personal-info">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required placeholder="example@email.com">
+            </div>
+
+            <div class="form-group personal-info">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required placeholder="123-456-7890">
+            </div>
+
+            <!-- Job Details Section -->
+            <div class="form-group job-details">
+                <label for="job_position">Desired Position</label>
+                <select id="job_position" name="job_position" required>
+                    <option value="">Select a position</option>
+                    <option>Software Engineer</option>
+                    <option>Data Analyst</option>
+                    <option>Product Manager</option>
+                    <option>UX Designer</option>
+                </select>
+            </div>
+
+            <div class="form-group job-details">
+                <label>Employment Type</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" id="full_time" name="employment_type" value="Full-time" required>
+                        Full-time 🌞
+                    </label>
+                    <label>
+                        <input type="radio" id="part_time" name="employment_type" value="Part-time">
+                        Part-time 🌙
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group job-details">
+                <label for="experience">Years of Experience</label>
+                <input type="number" id="experience" name="experience" min="0" required placeholder="Enter years of experience">
+            </div>
+
+            <!-- Resume Upload Section -->
+            <div class="form-group resume-section">
+                <label for="resume">Upload Your Resume</label>
+                <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" required>
+            </div>
+
+            <!-- CAPTCHA Section -->
+            <div class="captcha">
+                <p id="captchaQuestion"></p>
+                <input type="text" id="captchaInput" required placeholder="Enter CAPTCHA answer">
+            </div>
+
+            <!-- Submission Button -->
+            <button type="submit">🚀 Submit Application</button>
+
+            <!-- Success Message -->
+            <div id="successMessage">
+                ✅ Application submitted successfully!
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // (Keep the same JavaScript validation logic from previous version)
+        window.onload = function() {
+            const num1 = Math.floor(Math.random() * 10);
+            const num2 = Math.floor(Math.random() * 10);
+            const captchaDiv = document.getElementById('captchaQuestion');
+            captchaDiv.textContent = `What is ${num1} + ${num2}?`;
+            captchaDiv.dataset.solution = num1 + num2;
+        };
+
+        function validateForm(event) {
+            event.preventDefault();
+            const captchaInput = document.getElementById('captchaInput');
+            const expected = parseInt(document.getElementById('captchaQuestion').dataset.solution);
+
+            if (parseInt(captchaInput.value) === expected) {
+                document.getElementById('successMessage').style.display = 'block';
+                return true;
+            }
+            alert('CAPTCHA verification failed!');
+            return false;
+        }
+    </script>
+</body>
+</html>
