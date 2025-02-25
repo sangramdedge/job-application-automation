@@ -1,6 +1,9 @@
 # Job Application Automation System
 
 A system for automated job application submissions with resume upload and CAPTCHA solving capabilities.
+Python 3.8+
+Selenium
+License: MIT
 
 ## Features
 - Automated form filling
@@ -14,9 +17,10 @@ A system for automated job application submissions with resume upload and CAPTCH
 ```bash
 pip install -r requirements.txt
 
+
+
 📌 Job Application Automation System
 A Selenium-powered solution for automated form submissions with resume upload and CAPTCHA solving capabilities
-
 Key Features:
 ✅ Smart Automation - Auto-fills forms with user data from JSON
 ✅ Resume Handling - PDF/DOC file upload integration
